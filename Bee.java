@@ -1,4 +1,4 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * Write a description of class Hi here.
@@ -8,10 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Bee extends Actor
 {
-    /**
-     * Act - do whatever the Hi wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    GreenfootSound beeSound = new GreenfootSound ("beeSound.mp3");
     public void act()
     {
         if (Greenfoot.isKeyDown("left"))
@@ -20,7 +17,7 @@ public class Bee extends Actor
         }
         if (Greenfoot.isKeyDown("right"))
         {
-            move(1);            
+            move(2);            
         }
         eat();
     }
@@ -28,6 +25,7 @@ public class Bee extends Actor
     {
         if (isTouching(Baby.class))
         {
+            beeSound.play();
             removeTouching(Baby.class);
             MyWorld world = (MyWorld)getWorld();
             world.createBaby();
